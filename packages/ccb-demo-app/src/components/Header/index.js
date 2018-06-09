@@ -3,14 +3,15 @@ import { string } from 'prop-types';
 import styled from 'react-emotion';
 
 const Banner = styled('header')`
+  position: fixed;
+  width: 100%;
   display: flex;
-  flex-grow: 0;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 80px;
   margin: 0px;
-  background-color: #ddd;
+  background-color: #ddf;
 `;
 
 const Title = styled('h1')`
