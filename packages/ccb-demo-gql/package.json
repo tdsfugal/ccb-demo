@@ -1,9 +1,0 @@
-{
-  "name": "ccb-demo-gql",
-  "version": "1.0.0",
-  "private": true,
-  "description": "GraphQL server for CCB demo",
-  "main": "index.js",
-  "author": "T. Smith",
-  "license": "MIT"
-}

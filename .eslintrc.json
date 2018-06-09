@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "function-paren-newline": [1, "consistent"],
+    "arrow-parens": [1, "as-needed"],
+    "curly": 0,
+    "space-before-function-paren": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/html-has-lang": 0,
+    "object-curly-newline": [1, { "consistent": true }],
+    "import/extensions": 0
+  }
+}
