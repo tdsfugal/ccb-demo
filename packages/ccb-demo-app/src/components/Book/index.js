@@ -5,7 +5,7 @@ import styled from 'react-emotion';
 // import { Query } from 'react-apollo';
 import { SecureQuery } from 'crypto-collaboration-barrier';
 
-import { getBook } from '../../graphql';
+import { getBookGQL } from '../../graphql';
 
 const BookChip = styled('div')`
   background-color: #fff;
@@ -31,7 +31,7 @@ const BookReview = styled('div')`
 
 export default function Book({ id }) {
   return (
-    <SecureQuery query={getBook} variables={{ id }}>
+    <SecureQuery query={getBookGQL} variables={{ id }}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;

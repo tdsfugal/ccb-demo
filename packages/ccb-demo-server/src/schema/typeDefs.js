@@ -6,8 +6,14 @@ export default `
     book(id: String): Book
   }
 
+  type Mutation {
+    addBook(title: String!, author: String!): Book
+    deleteBook(id: String!): Book
+    updateReview(id: String!, review: String): Book
+  }
+
   type Book {
-    id: String,
+    id: String!,
     title: String,
     author: String
     review: String

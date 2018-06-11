@@ -3,8 +3,8 @@ import styled from 'react-emotion';
 
 import { Query } from 'react-apollo';
 
+import { getBooksGQL } from '../../graphql';
 import Book from '../Book';
-import { getBooks } from '../../graphql';
 
 const BookList = styled('ul')`
   list-style-type: none;
@@ -15,7 +15,7 @@ const BookList = styled('ul')`
 
 export default function Books() {
   return (
-    <Query query={getBooks}>
+    <Query query={getBooksGQL}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;

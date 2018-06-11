@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.7",
-    "crypto-collaboration-barrier":
-      "file:../../../crypto-collaboration-barrier",
+    "crypto-collaboration-barrier": "file:../../../crypto-collaboration-barrier",
     "emotion": "^9.2.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
@@ -20,6 +19,7 @@
     "react-apollo": "^2.1.4",
     "react-dom": "^16.4.0",
     "react-emotion": "^9.2.3",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "uuid": "^3.2.1"
   }
 }

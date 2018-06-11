@@ -1,12 +1,10 @@
+import uuid from 'uuid';
+
 import booksClearText from './booksClearText';
 import { encryptString } from './crypto';
 
-const ids = Object.keys(booksClearText);
-
-const db = ids.reduce((acc, id) => {
-  const book = booksClearText[id];
-  book.review = encryptString(book.review);
-  acc[id] = book;
+const db = booksClearText.reduce((acc, book) => {
+  acc[uuid()] = { ...book, review: encryptString(book.review) };
   return acc;
 }, {});
 
