@@ -1,6 +1,7 @@
 import React from 'react';
-import { Query } from 'react-apollo';
 import styled from 'react-emotion';
+
+import { Query } from 'react-apollo';
 
 import Book from '../Book';
 import { getBooks } from '../../graphql';

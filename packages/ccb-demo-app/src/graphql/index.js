@@ -13,7 +13,7 @@ export const getBook = gql`
     book(id: $id) {
       title
       author
-      review
+      review @secured
     }
   }
 `;
