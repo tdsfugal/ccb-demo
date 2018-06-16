@@ -2,6 +2,7 @@
   "name": "ccb-demo-app",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -12,7 +13,7 @@
     "apollo-boost": "^0.1.7",
     "ccb-demo-crypto": "^1.0.0",
     "ccb-demo-server": "^1.0.0",
-    "crypto-collaboration-barrier": "file:../../../crypto-collaboration-barrier",
+    "crypto-collaboration-barrier": "1.0.0",
     "emotion": "^9.2.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
