@@ -16,6 +16,7 @@
     "babel-jest": "^23.0.1",
     "body-parser": "^1.18.3",
     "casual": "^1.5.17",
+    "ccb-demo-crypto": "^1.0.0",
     "cors": "^2.8.4",
     "enzyme": "^3.3.0",
     "express": "^4.16.3",

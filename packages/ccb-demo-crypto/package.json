@@ -1,0 +1,24 @@
+{
+  "name": "ccb-demo-crypto",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Encrypt and decrypt functions",
+  "main": "./dist/dev/main.bundle.js",
+  "author": "T. Smith",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watch --no-cache",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack --watch"
+  },
+  "dependencies": {
+    "babel-jest": "^23.0.1",
+    "jest": "^23.1.0",
+    "sjcl": "^1.0.7"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
+}

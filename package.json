@@ -36,5 +36,9 @@
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4"
   },
-  "workspaces": ["packages/ccb-demo-app", "packages/ccb-demo-server"]
+  "workspaces": [
+    "packages/ccb-demo-app",
+    "packages/ccb-demo-crypto",
+    "packages/ccb-demo-server"
+  ]
 }
