@@ -17,7 +17,6 @@ const config = {
         exclude: [
           path.resolve(__dirname, 'node_modules'),
           path.resolve(__dirname, 'dist'),
-          path.resolve(__dirname, 'archive'),
         ],
         use: {
           loader: 'babel-loader',

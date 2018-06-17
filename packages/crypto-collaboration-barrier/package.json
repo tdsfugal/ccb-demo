@@ -6,24 +6,23 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "test": "jest --watch --no-cache",
+    "test": "jest --watch",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch "
   },
   "dependencies": {
     "apollo-client": "^2.3.2",
-    "babel-jest": "^23.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
-    "jest": "^23.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-apollo": "^2.1.4",
     "react-dom": "^16.3.0"
   },
   "jest": {
+    "testEnvironment": "node",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }
