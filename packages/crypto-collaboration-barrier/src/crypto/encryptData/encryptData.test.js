@@ -1,11 +1,11 @@
 /* eslint-disable no-undef, import/first, no-unused-vars */
-
 jest.unmock('./index');
-// Removes the 'ENCRYPTED - ' substring
-jest.mock('../field/encryptField', () => jest.fn(f => `ENCRYPTED - ${f}`));
+jest.mock('../field', () => ({
+  decryptField: jest.fn(f => f.slice(12)),
+  encryptField: jest.fn(f => `ENCRYPTED - ${f}`),
+}));
 
 import encryptData from './index';
-import encryptField from '../field/encryptField';
 
 describe('The encryptData function ', () => {
   it('should return an unchanged data object with an empty security map', () => {
