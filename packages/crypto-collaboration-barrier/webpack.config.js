@@ -17,13 +17,12 @@ const config = {
         exclude: [
           path.resolve(__dirname, 'node_modules'),
           path.resolve(__dirname, 'dist'),
-          path.resolve(__dirname, 'archive'),
         ],
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread'],
+            presets: ['env', 'react'],
+            plugins: ['transform-object-rest-spread'],
           },
         },
       },
