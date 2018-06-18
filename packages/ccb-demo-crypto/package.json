@@ -11,9 +11,7 @@
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch"
   },
-  "dependencies": {
-    "sjcl": "^1.0.7"
-  },
+  "dependencies": {},
   "jest": {
     "testEnvironment": "node",
     "transform": {
