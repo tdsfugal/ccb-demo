@@ -12,6 +12,10 @@
   },
   "dependencies": {
     "apollo-client": "^2.3.2",
+<<<<<<< HEAD
+=======
+    "ccb-demo-crypto": "^1.0.0",
+>>>>>>> mutation
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "graphql": "^0.13.2",
@@ -26,6 +30,7 @@
     "jest": "23.0.1"
   },
   "jest": {
+    "testEnvironment": "node",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }

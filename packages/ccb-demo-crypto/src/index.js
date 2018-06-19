@@ -1,12 +1,13 @@
-/* eslint-disable no-confusing-arrow */
-const encrypt = text =>
-  typeof text === 'string' || text instanceof String
-    ? `ENCRYPTED - ${text}`
-    : null;
+import TEA from './TEA';
 
-const decrypt = hash =>
-  typeof hash === 'string' || hash instanceof String ? hash.slice(12) : null;
+const setupCrypto = () => null;
 
-const setupCrypto = options => console.log(options);
+const PASSWORD = 'secret-sauce';
+
+const encrypt = (plainText, password = PASSWORD) =>
+  TEA.encrypt(plainText, password);
+
+const decrypt = (cypherText, password = PASSWORD) =>
+  TEA.decrypt(cypherText, password);
 
 export { encrypt, decrypt, setupCrypto };
