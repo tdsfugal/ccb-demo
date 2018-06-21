@@ -13,7 +13,7 @@ export const getBookGQL = gql`
     book(id: $id) {
       title
       author
-      review @secured
+      review
     }
   }
 `;
@@ -44,7 +44,7 @@ export const updateReviewGQL = gql`
   mutation updateReview($id: String!, $review: String) {
     updateReview(id: $id, review: $review) {
       id
-      review @secured
+      review 
       __typename
     }
   }
