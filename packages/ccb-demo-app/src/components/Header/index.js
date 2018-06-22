@@ -2,7 +2,7 @@ import React from 'react';
 import { string } from 'prop-types';
 import styled from 'react-emotion';
 
-import AddBook from './AddBook';
+import AddBook from '../AddBook';
 
 const Banner = styled('header')`
   position: fixed;
