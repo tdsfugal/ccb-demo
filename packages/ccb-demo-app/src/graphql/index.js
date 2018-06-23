@@ -13,7 +13,6 @@ export const getBookGQL = gql`
     book(id: $id) {
       title
       author
-      review @secured
     }
   }
 `;
@@ -36,6 +35,14 @@ export const deleteBookGQL = gql`
       title
       author
       __typename
+    }
+  }
+`;
+
+export const getBookReviewGQL = gql`
+  query getBook($id: String!) {
+    book(id: $id) {
+      review @secured
     }
   }
 `;
