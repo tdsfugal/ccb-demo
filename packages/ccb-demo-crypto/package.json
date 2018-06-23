@@ -11,20 +11,8 @@
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch"
   },
-<<<<<<< HEAD
-  "dependencies": {
-    "jest": "23.0.1",
-    "sjcl": "^1.0.7"
-  },
-  "devDependencies": {
-    "babel-jest": "23.0.1"
-  },
   "jest": {
-    "moduleFileExtensions": ["js"],
-=======
-  "jest": {
-    "testEnvironment": "node",
->>>>>>> mutation
+    "testEnvironment": "node", 
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }

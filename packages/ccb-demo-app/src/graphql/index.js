@@ -49,3 +49,9 @@ export const updateReviewGQL = gql`
     }
   }
 `;
+//
+// export const toggleSecureGQL = gql`
+//   mutation toggleSecure() {
+//     toggleSecure: @client
+//   }
+// `;

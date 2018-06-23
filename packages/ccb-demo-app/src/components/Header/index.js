@@ -3,6 +3,7 @@ import { string } from 'prop-types';
 import styled from 'react-emotion';
 
 import AddBook from './AddBook';
+import Secure from './Secure';
 
 const Banner = styled('header')`
   position: fixed;
@@ -27,6 +28,7 @@ export default function Header({ title }) {
     <Banner>
       <Title>{title}</Title>
       <AddBook />
+      <Secure />
     </Banner>
   );
 }

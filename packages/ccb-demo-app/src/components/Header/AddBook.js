@@ -1,24 +1,15 @@
 import React from 'react';
-import styled from 'react-emotion';
-
 import { Mutation } from 'react-apollo';
 
 import { addBookGQL } from '../../graphql';
 
-const AddBookButton = styled('button')`
-  background-color: #ddd;
-  border: solid 2px #888;
-  margin: 20px;
-  height: 40px;
-  width: 50px;
-  font-size: 0.6em;
-`;
+import HeaderButton from './HeaderButton';
 
 export default function AddBook() {
   return (
     <Mutation mutation={addBookGQL}>
       {addBook => (
-        <AddBookButton
+        <HeaderButton
           onClick={() =>
             addBook({
               variables: {
@@ -29,7 +20,7 @@ export default function AddBook() {
           }
         >
           Add Book
-        </AddBookButton>
+        </HeaderButton>
       )}
     </Mutation>
   );
