@@ -4,8 +4,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import cors from 'cors';
 
 import schema from './schema';
-
-const PORT = 4002;
+import { PORT } from './config';
 
 // Start the app
 express()
