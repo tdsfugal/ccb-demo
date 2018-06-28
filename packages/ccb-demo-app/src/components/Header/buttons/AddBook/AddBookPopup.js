@@ -17,9 +17,21 @@ export default class AddBookPopup extends Component {
     const { author, title } = this.state;
     return (
       <div>
-        <input type="text" placeholder="Title" value={title} onChange={this.updateTitle} />
-        <input type="text" placeholder="Author" value={author} onChange={this.updateAuthor} />
-        <button onClick={() => this.props.handleSubmit(this.state)}>Submit</button>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={this.updateTitle}
+        />
+        <input
+          type="text"
+          placeholder="Author"
+          value={author}
+          onChange={this.updateAuthor}
+        />
+        <button onClick={() => this.props.handleSubmit(this.state)}>
+          Submit
+        </button>
       </div>
     );
   }

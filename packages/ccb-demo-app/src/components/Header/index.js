@@ -2,8 +2,8 @@ import React from 'react';
 import { string } from 'prop-types';
 import styled from 'react-emotion';
 
-import AddBook from './AddBook';
-import Secured from './Secured';
+import AddBook from './buttons/AddBook';
+import Secured from './buttons/Secured';
 
 const Banner = styled('header')`
   position: fixed;
@@ -34,5 +34,5 @@ export default function Header({ title }) {
 }
 
 Header.propTypes = {
-  title: string.isRequired
+  title: string.isRequired,
 };

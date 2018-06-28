@@ -2,9 +2,12 @@ import React from 'react';
 
 import { Mutation, Query } from 'react-apollo';
 
-import { setSecuredGQL, getSecurityStateGQL } from '../../graphql/operations';
+import {
+  setSecuredGQL,
+  getSecurityStateGQL,
+} from '../../../../graphql/operations';
 
-import HeaderButton from './HeaderButton';
+import HeaderButton from '../HeaderButton';
 
 export default function Secured() {
   return (
