@@ -52,7 +52,6 @@ export default [
   {
     title: 'Relativity: The Special and General Theory',
     author: 'Albert Einstein',
-    review:
-      'Einstein brilliantly proves that gravity is the opposite of comedy.',
+    review: 'Einstein brilliantly proves that gravity is the opposite of comedy.',
   },
 ];

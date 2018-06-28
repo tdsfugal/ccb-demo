@@ -51,7 +51,7 @@ export const updateReviewGQL = gql`
   mutation updateReview($id: String!, $review: String) {
     updateReview(id: $id, review: $review) {
       id
-      review @secured
+      review
       __typename
     }
   }

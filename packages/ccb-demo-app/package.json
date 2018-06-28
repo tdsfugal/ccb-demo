@@ -23,6 +23,7 @@
     "react-dom": "^16.4.0",
     "react-emotion": "^9.2.3",
     "react-scripts": "1.1.4",
+    "reactjs-popup": "^1.1.1",
     "uuid": "^3.2.1"
   }
 }

@@ -34,5 +34,5 @@ export default function Header({ title }) {
 }
 
 Header.propTypes = {
-  title: string.isRequired,
+  title: string.isRequired
 };

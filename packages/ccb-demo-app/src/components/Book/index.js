@@ -1,8 +1,7 @@
 import React from 'react';
 import { string } from 'prop-types';
 
-// import { Query } from 'react-apollo';
-import { SecureQuery } from 'crypto-collaboration-barrier';
+import { Query } from 'react-apollo';
 
 import { getBookGQL } from '../../graphql/operations';
 import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from './BookStyles';
@@ -10,7 +9,7 @@ import BookReview from './BookReview';
 
 export default function Book({ id }) {
   return (
-    <SecureQuery query={getBookGQL} variables={{ id }}>
+    <Query query={getBookGQL} variables={{ id }}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;
@@ -27,7 +26,7 @@ export default function Book({ id }) {
         }
         return null;
       }}
-    </SecureQuery>
+    </Query>
   );
 }
 
