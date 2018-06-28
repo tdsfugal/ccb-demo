@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 
-import { addBookGQL } from '../../graphql';
+import { addBookGQL } from '../../graphql/operations';
 
 import HeaderButton from './HeaderButton';
 
@@ -10,6 +10,7 @@ export default function AddBook() {
     <Mutation mutation={addBookGQL}>
       {addBook => (
         <HeaderButton
+          backgroundColor={'#AAF'}
           onClick={() =>
             addBook({
               variables: {

@@ -4,7 +4,7 @@ import { string } from 'prop-types';
 // import { Query } from 'react-apollo';
 import { SecureQuery } from 'crypto-collaboration-barrier';
 
-import { getBookReviewGQL } from '../../../graphql';
+import { getBookReviewGQL } from '../../../graphql/operations';
 import { BookReviewDiv } from '../BookStyles';
 
 export default function BookReview({ id }) {

@@ -56,9 +56,17 @@ export const updateReviewGQL = gql`
     }
   }
 `;
-//
-// export const toggleSecureGQL = gql`
-//   mutation toggleSecure() {
-//     toggleSecure: @client
-//   }
-// `;
+
+export const getSecurityStateGQL = gql`
+  query getSecurityState @client {
+    securityState {
+      isSecured
+    }
+  }
+`;
+
+export const setSecuredGQL = gql`
+  mutation setSecured($secured: Boolean) {
+    setSecured(secured: $secured) @client
+  }
+`;

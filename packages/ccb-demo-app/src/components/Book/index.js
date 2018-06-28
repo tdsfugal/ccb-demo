@@ -4,7 +4,7 @@ import { string } from 'prop-types';
 // import { Query } from 'react-apollo';
 import { SecureQuery } from 'crypto-collaboration-barrier';
 
-import { getBookGQL } from '../../graphql';
+import { getBookGQL } from '../../graphql/operations';
 import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from './BookStyles';
 import BookReview from './BookReview';
 
