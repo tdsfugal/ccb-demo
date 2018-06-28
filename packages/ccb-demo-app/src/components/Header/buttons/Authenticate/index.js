@@ -3,34 +3,35 @@ import React from 'react';
 import { Mutation, Query } from 'react-apollo';
 
 import {
-  setSecuredGQL,
+  setAuthenticationGQL,
   getSecurityStateGQL,
 } from '../../../../graphql/operations';
 
 import HeaderButton from '../HeaderButton';
 
-export default function Secured() {
+export default function Authenticate() {
   return (
-    <Mutation mutation={setSecuredGQL}>
-      {setSecured => (
+    <Mutation mutation={setAuthenticationGQL}>
+      {setAuthentication => (
         <Query query={getSecurityStateGQL}>
           {({ loading, error, data }) => {
-            const isSecured =
+            const isAuthenticated =
               loading || error || !data || !data.securityState
                 ? false
-                : data.securityState.isSecured;
+                : data.securityState.isAuthenticated;
             return (
               <HeaderButton
-                backgroundColor={isSecured ? '#AFA' : '#F66'}
+                backgroundColor={isAuthenticated ? '#AFA' : '#F66'}
+                color={isAuthenticated ? 'black' : 'yellow'}
                 onClick={() =>
-                  setSecured({
+                  setAuthentication({
                     variables: {
-                      secured: !isSecured,
+                      authenticated: !isAuthenticated,
                     },
                   })
                 }
               >
-                {isSecured ? 'Logged In' : 'Unknown'}
+                {isAuthenticated ? 'Authentiated' : 'Stranger'}
               </HeaderButton>
             );
           }}

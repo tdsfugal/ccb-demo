@@ -1,26 +1,46 @@
 export default {
   typeDefs: `
-  
-    type SecurityState { isSecured: Boolean }
 
-    type Query { getSecured: SecurityState }
-    type Mutation { setSecured: SecurityState }
+    type SecurityState {
+      queryType: String,
+      isAuthenticated: Boolean
+    }
+
+    type Query {
+      getSecurityState: SecurityState
+    }
+    type Mutation {
+      setQueryType: SecurityState
+      setAuthentication: SecurityState
+    }
   `,
 
   defaults: {
     securityState: {
-      isSecured: true,
+      queryType: 'SecureQuery',
+      isAuthenticated: false,
       __typename: 'SecurityState',
     },
   },
 
   resolvers: {
     Mutation: {
-      setSecured: async (_, args, { cache }) => {
+      setQueryType: async (_, args, { cache }) => {
         cache.writeData({
           data: {
             securityState: {
-              isSecured: args.secured,
+              queryType: args.queryType,
+              __typename: 'SecurityState',
+            },
+          },
+        });
+        return null;
+      },
+      setAuthentication: async (_, args, { cache }) => {
+        cache.writeData({
+          data: {
+            securityState: {
+              isAuthenticated: args.authenticated,
               __typename: 'SecurityState',
             },
           },

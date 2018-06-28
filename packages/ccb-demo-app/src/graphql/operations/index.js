@@ -39,14 +39,6 @@ export const deleteBookGQL = gql`
   }
 `;
 
-export const getBookReviewGQL = gql`
-  query getBook($id: String!) {
-    book(id: $id) {
-      review @secured
-    }
-  }
-`;
-
 export const updateReviewGQL = gql`
   mutation updateReview($id: String!, $review: String) {
     updateReview(id: $id, review: $review) {
@@ -60,13 +52,20 @@ export const updateReviewGQL = gql`
 export const getSecurityStateGQL = gql`
   query getSecurityState @client {
     securityState {
-      isSecured
+      queryType
+      isAuthenticated
     }
   }
 `;
 
-export const setSecuredGQL = gql`
-  mutation setSecured($secured: Boolean) {
-    setSecured(secured: $secured) @client
+export const setQueryTypeGQL = gql`
+  mutation setQueryType($queryType: String!) {
+    setQueryType(queryType: $queryType) @client
+  }
+`;
+
+export const setAuthenticationGQL = gql`
+  mutation setAuthentication($authenticated: Boolean) {
+    setAuthentication(authenticated: $authenticated) @client
   }
 `;

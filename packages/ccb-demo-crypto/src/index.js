@@ -1,5 +1,7 @@
 import TEA from './TEA';
 
+/* eslint-disable no-console */
+
 const setupCrypto = () => null;
 
 const PASSWORD = 'secret-sauce';
