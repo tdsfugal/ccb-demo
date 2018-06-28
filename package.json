@@ -2,6 +2,7 @@
   "name": "ccb-demo",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Demo system for crypto-collaboration barrier",
   "scripts": {
     "bootstrap": "lerna bootstrap",
