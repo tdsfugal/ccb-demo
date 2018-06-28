@@ -13,7 +13,6 @@ export const getBookGQL = gql`
     book(id: $id) {
       title
       author
-      review
     }
   }
 `;
@@ -40,12 +39,34 @@ export const deleteBookGQL = gql`
   }
 `;
 
+export const getBookReviewGQL = gql`
+  query getBook($id: String!) {
+    book(id: $id) {
+      review @secured
+    }
+  }
+`;
+
 export const updateReviewGQL = gql`
   mutation updateReview($id: String!, $review: String) {
     updateReview(id: $id, review: $review) {
       id
-      review  
+      review
       __typename
     }
+  }
+`;
+
+export const getSecurityStateGQL = gql`
+  query getSecurityState @client {
+    securityState {
+      isSecured
+    }
+  }
+`;
+
+export const setSecuredGQL = gql`
+  mutation setSecured($secured: Boolean) {
+    setSecured(secured: $secured) @client
   }
 `;

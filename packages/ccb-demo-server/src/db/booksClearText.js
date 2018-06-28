@@ -7,7 +7,7 @@ export default [
   {
     title: 'Jurassic Park',
     author: 'Michael Crichton',
-    review: 'Dinosaurs rule an island.',
+    review: 'Dinosaurs frolick amongst the humans on a resort island.',
   },
   {
     title: 'Dune',
@@ -17,7 +17,7 @@ export default [
   {
     title: 'Foundation',
     author: 'Isaac Asimov',
-    review: 'Earliest description of big data in politics.',
+    review: 'The origins of Facebook.',
   },
   {
     title: 'Second Foundation',
@@ -52,7 +52,6 @@ export default [
   {
     title: 'Relativity: The Special and General Theory',
     author: 'Albert Einstein',
-    review:
-      'Einstein brilliantly proves that gravity is the opposite of comedy.',
+    review: 'Einstein brilliantly proves that gravity is the opposite of comedy.',
   },
 ];

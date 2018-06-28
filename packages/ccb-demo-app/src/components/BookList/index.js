@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 
 import { Query } from 'react-apollo';
 
-import { getBooksGQL } from '../../graphql';
+import { getBooksGQL } from '../../graphql/operations';
 import Book from '../Book';
 
 const BookList = styled('ul')`

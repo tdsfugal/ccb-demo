@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import { encryptString, decryptString } from './index';
 
+debugger;
+
 describe('The two crypto functions should be inverses', () => {
   it('encrypt -> decrypt', () => {
     const expected = 'The quick brown fox jumped over the lazy dog. 12345!';

@@ -1,13 +1,11 @@
 import uuid from 'uuid';
+import { encrypt } from 'ccb-demo-crypto';
 
 import booksClearText from './booksClearText';
-import { encryptString } from './crypto';
 
 const ENCRYPT_REVIEW = true;
 
-const db = booksClearText.reduce((acc, book) => {
-  acc[uuid()] = ENCRYPT_REVIEW ? { ...book, review: encryptString(book.review) } : book;
+export default booksClearText.reduce((acc, book) => {
+  acc[uuid()] = ENCRYPT_REVIEW ? { ...book, review: encrypt(book.review) } : book;
   return acc;
 }, {});
-
-export default db;

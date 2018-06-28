@@ -9,7 +9,7 @@ export default `
   type Mutation {
     addBook(title: String!, author: String!): Book
     deleteBook(id: String!): Book
-    updateReview(id: String!, review: String): Book
+    updateReview(id: String!, review: String): Book 
   }
 
   type Book {
