@@ -2,22 +2,26 @@ export default {
   typeDefs: `
 
     type SecurityState {
-      queryType: String,
-      isAuthenticated: Boolean
+      queryType: String!,
+      mutationType: String!,
+      isAuthenticated: Boolean!
     }
 
     type Query {
       getSecurityState: SecurityState
     }
+
     type Mutation {
       setQueryType: SecurityState
+      setMutationType: SecurityState
       setAuthentication: SecurityState
     }
   `,
 
   defaults: {
     securityState: {
-      queryType: 'SecureQuery',
+      queryType: 'Query',
+      mutationType: 'Mutation',
       isAuthenticated: false,
       __typename: 'SecurityState',
     },
@@ -30,6 +34,17 @@ export default {
           data: {
             securityState: {
               queryType: args.queryType,
+              __typename: 'SecurityState',
+            },
+          },
+        });
+        return null;
+      },
+      setMutationType: async (_, args, { cache }) => {
+        cache.writeData({
+          data: {
+            securityState: {
+              mutationType: args.mutationType,
               __typename: 'SecurityState',
             },
           },

@@ -3,8 +3,9 @@ import Popup from 'reactjs-popup';
 import { Mutation } from 'react-apollo';
 
 import { addBookGQL } from '../../../../graphql';
+import { HeaderButton } from '../../../_styled';
+
 import AddBookPopup from './AddBookPopup';
-import HeaderButton from '../HeaderButton';
 
 export default function AddBook() {
   return (

@@ -1,17 +1,11 @@
 import React from 'react';
-import styled from 'react-emotion';
 
 import { Query } from 'react-apollo';
 
 import { getBooksGQL } from '../../graphql';
-import Book from '../Book';
+import { BookList } from '../_styled';
 
-const BookList = styled('ul')`
-  list-style-type: none;
-  background-color: #f8f8f8;
-  padding: 40px;
-  margin: 0px;
-`;
+import Book from '../Book';
 
 export default function Books() {
   return (

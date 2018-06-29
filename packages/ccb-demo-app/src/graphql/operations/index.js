@@ -53,6 +53,7 @@ export const getSecurityStateGQL = gql`
   query getSecurityState @client {
     securityState {
       queryType
+      mutationType
       isAuthenticated
     }
   }
@@ -61,6 +62,12 @@ export const getSecurityStateGQL = gql`
 export const setQueryTypeGQL = gql`
   mutation setQueryType($queryType: String!) {
     setQueryType(queryType: $queryType) @client
+  }
+`;
+
+export const setMutationTypeGQL = gql`
+  mutation setMutationType($mutationType: String!) {
+    setMutationType(mutationType: $mutationType) @client
   }
 `;
 

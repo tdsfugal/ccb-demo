@@ -4,8 +4,8 @@ import { string } from 'prop-types';
 import { Query } from 'react-apollo';
 
 import { getBookGQL } from '../../graphql';
-import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from './BookStyles';
-import BookReview from './BookReview';
+import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from '../_styled';
+import BookReview from '../BookReview';
 
 export default function Book({ id }) {
   return (

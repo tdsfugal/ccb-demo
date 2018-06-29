@@ -5,8 +5,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { SecureQuery } from 'crypto-collaboration-barrier';
 
-import { getSecurityStateGQL } from '../../../graphql';
-import { BookReviewDiv } from '../BookStyles';
+import { getSecurityStateGQL } from '../../graphql';
+import { BookReviewDiv } from '../_styled';
 
 /* eslint-disable spaced-comment, react/prop-types */
 

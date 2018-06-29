@@ -4,7 +4,7 @@ import { Mutation, Query } from 'react-apollo';
 
 import { setAuthenticationGQL, getSecurityStateGQL } from '../../../../graphql';
 
-import HeaderButton from '../HeaderButton';
+import { HeaderButton } from '../../../_styled';
 
 export default function Authenticate() {
   return (

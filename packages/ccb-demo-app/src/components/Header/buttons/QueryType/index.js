@@ -4,9 +4,9 @@ import { Mutation, Query } from 'react-apollo';
 
 import { setQueryTypeGQL, getSecurityStateGQL } from '../../../../graphql';
 
-import HeaderButton from '../HeaderButton';
+import { HeaderButton } from '../../../_styled';
 
-export default function Secured() {
+export default function QueryType() {
   return (
     <Mutation mutation={setQueryTypeGQL}>
       {setQueryType => (
