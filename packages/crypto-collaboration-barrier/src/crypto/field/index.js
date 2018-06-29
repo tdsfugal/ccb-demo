@@ -1,13 +1,24 @@
-import { encrypt, decrypt } from 'ccb-demo-crypto';
+/* eslint-disable arrow-body-style */
 
-export function encryptField(field) {
-  return typeof field === 'string' || field instanceof String
-    ? encrypt(field)
-    : field;
-}
+const cryptoFunctions = {};
 
-export function decryptField(field) {
+const initializeCCB = ({ encrypt, decrypt }) => {
+  if (!encrypt || !decrypt)
+    throw Error('CCB not provided with encrypt and decrypt');
+  cryptoFunctions.encrypt = encrypt;
+  cryptoFunctions.decrypt = decrypt;
+};
+
+const encryptField = field => {
   return typeof field === 'string' || field instanceof String
-    ? decrypt(field)
+    ? cryptoFunctions.encrypt(field)
     : field;
-}
+};
+
+const decryptField = field => {
+  return typeof field === 'string' || field instanceof String
+    ? cryptoFunctions.decrypt(field)
+    : field;
+};
+
+export { initializeCCB, encryptField, decryptField };

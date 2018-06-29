@@ -9,7 +9,7 @@ console.log(`Building CCB-Demo-Crypto in ${environ}`);
 const config = {
   context: path.join(__dirname, 'src'),
   entry: './index.js',
-  target: 'web',
+  target: 'node',
   module: {
     rules: [
       {

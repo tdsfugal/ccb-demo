@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import { Mutation } from 'react-apollo';
 
-import { addBookGQL } from '../../../../graphql/operations';
+import { addBookGQL } from '../../../../graphql';
 import AddBookPopup from './AddBookPopup';
 import HeaderButton from '../HeaderButton';
 

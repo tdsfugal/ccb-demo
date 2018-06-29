@@ -2,26 +2,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
-import ApolloClient from 'apollo-boost';
-import { encrypt, decrypt, setupCrypto } from 'ccb-demo-crypto';
-import { setupCCB } from 'crypto-collaboration-barrier';
-
-import clientState from './graphql/clientState';
 
 import App from './app';
+import { getApolloClient } from './graphql';
 
-import './index.css';
+// set up the boilerplate
+import './index.css'; // loads the base css
+import './services'; // starts the autonomous services
 
-setupCrypto({ passkey: 'abc123' });
-setupCCB({ encrypt, decrypt });
-
-const client = new ApolloClient({
-  uri: 'http://localhost:4002/graphql',
-  clientState,
-});
-
+// start the user interface
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  <ApolloProvider client={getApolloClient()}>
     <App />
   </ApolloProvider>,
   document.getElementById('root'),

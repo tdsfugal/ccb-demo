@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-client": "^2.3.2",
-    "ccb-demo-crypto": "^1.0.0", 
+    "ccb-demo-crypto": "^1.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "graphql": "^0.13.2",
@@ -21,10 +21,6 @@
     "react": "^16.4.0",
     "react-apollo": "^2.1.4",
     "react-dom": "^16.3.0"
-  },
-  "devDependencies": {
-    "babel-jest": "23.0.1",
-    "jest": "23.0.1"
   },
   "jest": {
     "testEnvironment": "node",

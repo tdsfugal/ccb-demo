@@ -1,5 +1,5 @@
 import SecureQuery from './SecureQuery';
 import SecureMutation from './SecureMutation';
-import setupCCB from './crypto';
+import { initializeCCB } from './crypto';
 
-export { SecureQuery, SecureMutation, setupCCB };
+export { SecureQuery, SecureMutation, initializeCCB };

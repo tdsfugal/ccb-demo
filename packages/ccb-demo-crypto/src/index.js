@@ -1,15 +1,31 @@
 import TEA from './TEA';
 
-/* eslint-disable no-console */
+/* eslint-disable no-unused-vars, arrow-body-style, no-console */
 
-const setupCrypto = () => null;
+const DEFAULT_PASSWORD = 'Using this should be a security error';
 
-const PASSWORD = 'secret-sauce';
+export class Crypto {
+  constructor() {
+    // These variables are hidden by the constructor closure
+    const secretPassword = DEFAULT_PASSWORD;
+    let on = true;
 
-const encrypt = (plainText, password = PASSWORD) =>
-  TEA.encrypt(plainText, password);
+    this.setCryptoOn = () => {
+      console.log('Setting Crytpo ON');
+      on = true;
+    };
 
-const decrypt = (cypherText, password = PASSWORD) =>
-  TEA.decrypt(cypherText, password);
+    this.setCryptoOff = () => {
+      console.log('Setting Crypto OFF');
+      on = false;
+    };
 
-export { encrypt, decrypt, setupCrypto };
+    this.encrypt = (plainText, options) => {
+      return on ? TEA.encrypt(plainText, secretPassword) : plainText;
+    };
+
+    this.decrypt = (cypherText, options) => {
+      return on ? TEA.decrypt(cypherText, secretPassword) : cypherText;
+    };
+  }
+}

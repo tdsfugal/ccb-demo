@@ -2,10 +2,7 @@ import React from 'react';
 
 import { Mutation, Query } from 'react-apollo';
 
-import {
-  setQueryTypeGQL,
-  getSecurityStateGQL,
-} from '../../../../graphql/operations';
+import { setQueryTypeGQL, getSecurityStateGQL } from '../../../../graphql';
 
 import HeaderButton from '../HeaderButton';
 

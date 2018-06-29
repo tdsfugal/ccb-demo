@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 
 import { Query } from 'react-apollo';
 
-import { getBookGQL } from '../../graphql/operations';
+import { getBookGQL } from '../../graphql';
 import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from './BookStyles';
 import BookReview from './BookReview';
 
