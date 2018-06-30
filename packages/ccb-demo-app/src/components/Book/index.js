@@ -4,7 +4,7 @@ import { string } from 'prop-types';
 import { Query } from 'react-apollo';
 
 import { getBookGQL } from '../../graphql';
-import { BookChipDiv, BookTitleDiv, BookAuthorDiv } from '../_styled';
+import { BookChip, BookTitle, BookAuthor } from '../_styled';
 import BookReview from '../BookReview';
 
 export default function Book({ id }) {
@@ -17,11 +17,11 @@ export default function Book({ id }) {
         if (data && data.book) {
           const { title, author } = data.book;
           return (
-            <BookChipDiv>
-              <BookTitleDiv>{title}</BookTitleDiv>
-              <BookAuthorDiv>{author}</BookAuthorDiv>
+            <BookChip>
+              <BookTitle>{title}</BookTitle>
+              <BookAuthor>{author}</BookAuthor>
               <BookReview id={id} />
-            </BookChipDiv>
+            </BookChip>
           );
         }
         return null;
