@@ -2,7 +2,10 @@ import uuid from 'uuid';
 
 import db from '../db';
 
-const getBook = id => (id && db[id] ? { ...db[id], id } : null);
+const getBook = id => {
+  if (!id || !db[id]) return null;
+  return { ...db[id], id, __typename: 'Book' };
+};
 
 export default {
   Query: {
@@ -16,12 +19,12 @@ export default {
       db[id] = { title, author, review: '' };
       return getBook(id);
     },
-    deleteBook: (_, { variables: { id } }) => {
+    deleteBook: (_, { id }) => {
       const gonner = getBook(id);
       if (gonner) delete db[id];
       return gonner;
     },
-    updateReview: (_, { variables: { id, review } }) => {
+    setBookReview: (_, { id, review }) => {
       if (db[id]) db[id].review = review;
       return getBook(id);
     },

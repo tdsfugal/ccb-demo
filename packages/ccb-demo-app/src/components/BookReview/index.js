@@ -1,14 +1,15 @@
 import React from 'react';
 import { string } from 'prop-types';
 
-import { Query, Mutation } from 'react-apollo'; 
-import { SecureQuery, SecureMutation } from 'crypto-collaboration-barrier'; 
+import { Query, Mutation } from 'react-apollo';
+import { SecureQuery, SecureMutation } from 'crypto-collaboration-barrier';
 
 import {
   getSecurityStateGQL,
   getBookReviewGQL,
   getBookReviewSecureGQL,
   setBookReviewGQL,
+  setBookReviewSecureGQL,
 } from '../../graphql';
 
 import BookReviewEditor from './BookReviewEditor';
@@ -27,7 +28,7 @@ export default function BookReview({ id }) {
         //
         // 1) Same child function for both Secured and regular Query because
         // the data is decryrpted before it gets called:
-        const childComponent = update => ({ loading, error, data }) => {
+        const childComponent = setBookReview => ({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
 
@@ -35,49 +36,26 @@ export default function BookReview({ id }) {
           return (
             <BookReviewEditor
               value={review}
-              update={newValue => {
-                console.log(newValue);
-                update(newValue);
-              }}
+              update={newValue =>
+                setBookReview({ variables: { id, review: newValue } })
+              }
             />
           );
         };
- 
+
         // 3) Integration is a simple matter of adding a dependency and changing the HOC:
-        const querySet = update => {
+        const querySet = setBookReview => {
           switch (queryType) {
             case 'Query':
               return (
                 <Query query={getBookReviewGQL} variables={{ id }}>
-                  {childComponent(update)}
+                  {childComponent(setBookReview)}
                 </Query>
               );
             case 'SecureQuery':
               return (
                 <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
-                  {childComponent(update)}
-                </SecureQuery>
-              );
-            default:
-              // eslint-disable-next-line no-console
-              console.log('Unknown Query Type');
-              return null; 
-          }
-        };
- 
-        // 3) Integration is a simple matter of adding a dependency and changing the HOC:
-        const querySet = () => {
-          switch (queryType) {
-            case 'Query':
-              return (
-                <Query query={getBookReviewGQL} variables={{ id }}>
-                  {childComponent}
-                </Query>
-              );
-            case 'SecureQuery':
-              return (
-                <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
-                  {childComponent}
+                  {childComponent(setBookReview)}
                 </SecureQuery>
               );
             default:
@@ -86,23 +64,6 @@ export default function BookReview({ id }) {
               return null;
           }
         };
-
-        // 4 Mutations follow the same pattern. Annotation in the mutation
-        const setBookReviewGQL = gql`
-          mutation setBookReview($id: String!, $review: String!) {
-            book(id: $id) {
-              review
-            }
-          }
-        `;
-
-        const setBookReviewSecureGQL = gql`
-          mutation setBookReview($id: String!, $review: String!) {
-            book(id: $id) {
-              review @secured
-            }
-          }
-        `;
 
         // One key difference is that the things in the argument list that must be secured
         // cannot be invered from the GraphQL annotations, as they refer only to the return values.
@@ -114,7 +75,7 @@ export default function BookReview({ id }) {
           case 'Mutation':
             return (
               <Mutation mutation={setBookReviewGQL}>
-                {mutation => querySet(mutation)}
+                {setBookReview => querySet(setBookReview)}
               </Mutation>
             );
           case 'SecureMutation':
@@ -123,7 +84,7 @@ export default function BookReview({ id }) {
                 mutation={setBookReviewSecureGQL}
                 secured={secured}
               >
-                {mutation => querySet(mutation)}
+                {setBookReview => querySet(setBookReview)}
               </SecureMutation>
             );
           default:
@@ -131,7 +92,6 @@ export default function BookReview({ id }) {
             console.log('Unknown Mutation Type');
             return null;
         }
- 
 
         //-------------------------------------------------------------
       }}

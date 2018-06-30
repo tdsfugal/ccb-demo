@@ -3,7 +3,9 @@ import gql from 'graphql-tag';
 export const getBookReviewGQL = gql`
   query getBook($id: String!) {
     book(id: $id) {
+      id
       review
+      __typename
     }
   }
 `;
@@ -18,10 +20,14 @@ export const setBookReviewGQL = gql`
   }
 `;
 
+// -------The only difference is the @secured annoation
+
 export const getBookReviewSecureGQL = gql`
   query getBook($id: String!) {
     book(id: $id) {
+      id
       review @secured
+      __typename
     }
   }
 `;

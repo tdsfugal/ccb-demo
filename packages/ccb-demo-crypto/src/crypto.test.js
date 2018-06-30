@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Crypto from './index';
+import { Crypto } from './index';
 
 describe('The Crypto Object ', () => {
   it('should default to ON when constructed', () => {
