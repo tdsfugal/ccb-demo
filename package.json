@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "description": "Demo system for crypto-collaboration barrier",
+  "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "pretest": "eslint packages",

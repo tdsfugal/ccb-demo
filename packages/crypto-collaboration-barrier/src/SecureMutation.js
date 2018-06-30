@@ -49,7 +49,12 @@ SecureMutation.propTypes = {
     loc: object.isRequired,
     definitions: array.isRequired,
   }).isRequired,
-  secured: arrayOf(string).isRequired,
+  secured: arrayOf(
+    shape({
+      name: string.isRequired,
+      options: object,
+    }),
+  ).isRequired,
   children: func.isRequired,
   variables: object,
   optimisticResponse: object,

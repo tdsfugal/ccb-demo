@@ -24,7 +24,7 @@ const decryptField = field => {
   try {
     if (!(typeof field === 'string' || field instanceof String))
       throw new Error('CCB encryptField: Field must be string');
-    return cryptoFunctions.decrypt(field)
+    return cryptoFunctions.decrypt(field);
   } catch (err) {
     console.log(`Failure on Decrypt with: ${field}`);
     return field;

@@ -68,7 +68,7 @@ export default function BookReview({ id }) {
         // One key difference is that the things in the argument list that must be secured
         // cannot be invered from the GraphQL annotations, as they refer only to the return values.
         // An additional "secured" values input is required.
-        const secured = [ 'review'];
+        const secured = [{ name: 'review' }];
 
         // The outer set is the same; just swap the HOC and add a couple of things.
         switch (mutationType) {
