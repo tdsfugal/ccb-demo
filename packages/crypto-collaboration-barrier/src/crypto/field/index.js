@@ -10,15 +10,25 @@ const initializeCCB = ({ encrypt, decrypt }) => {
 };
 
 const encryptField = field => {
-  return typeof field === 'string' || field instanceof String
-    ? cryptoFunctions.encrypt(field)
-    : field;
+  try {
+    if (!(typeof field === 'string' || field instanceof String))
+      throw new Error('CCB encryptField: Field must be string');
+    return cryptoFunctions.encrypt(field);
+  } catch (err) {
+    console.log(`Failure on Encrypt with: ${field}`);
+    return field;
+  }
 };
 
 const decryptField = field => {
-  return typeof field === 'string' || field instanceof String
-    ? cryptoFunctions.decrypt(field)
-    : field;
+  try {
+    if (!(typeof field === 'string' || field instanceof String))
+      throw new Error('CCB encryptField: Field must be string');
+    return cryptoFunctions.decrypt(field)
+  } catch (err) {
+    console.log(`Failure on Decrypt with: ${field}`);
+    return field;
+  }
 };
 
 export { initializeCCB, encryptField, decryptField };
