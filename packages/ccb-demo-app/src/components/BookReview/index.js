@@ -1,12 +1,17 @@
 import React from 'react';
 import { string } from 'prop-types';
-import gql from 'graphql-tag';
 
-import { Query, Mutation } from 'react-apollo';
-import { SecureQuery, SecureMutation } from 'crypto-collaboration-barrier';
+import { Query, Mutation } from 'react-apollo'; 
+import { SecureQuery, SecureMutation } from 'crypto-collaboration-barrier'; 
 
-import { getSecurityStateGQL } from '../../graphql';
-import { BookReviewDiv } from '../_styled';
+import {
+  getSecurityStateGQL,
+  getBookReviewGQL,
+  getBookReviewSecureGQL,
+  setBookReviewGQL,
+} from '../../graphql';
+
+import BookReviewEditor from './BookReviewEditor';
 
 /* eslint-disable spaced-comment, react/prop-types */
 
@@ -22,32 +27,44 @@ export default function BookReview({ id }) {
         //
         // 1) Same child function for both Secured and regular Query because
         // the data is decryrpted before it gets called:
-        const childComponent = ({ loading, error, data }) => {
+        const childComponent = update => ({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
 
-          return !data.book ? null : (
-            <BookReviewDiv>{data.book.review}</BookReviewDiv>
+          const { review } = data.book;
+          return (
+            <BookReviewEditor
+              value={review}
+              update={newValue => {
+                console.log(newValue);
+                update(newValue);
+              }}
+            />
           );
         };
-
-        // 2) Only difference in the GraphQL queries is an @secured annotation:
-        const getBookReviewGQL = gql`
-          query getBook($id: String!) {
-            book(id: $id) {
-              review
-            }
+ 
+        // 3) Integration is a simple matter of adding a dependency and changing the HOC:
+        const querySet = update => {
+          switch (queryType) {
+            case 'Query':
+              return (
+                <Query query={getBookReviewGQL} variables={{ id }}>
+                  {childComponent(update)}
+                </Query>
+              );
+            case 'SecureQuery':
+              return (
+                <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
+                  {childComponent(update)}
+                </SecureQuery>
+              );
+            default:
+              // eslint-disable-next-line no-console
+              console.log('Unknown Query Type');
+              return null; 
           }
-        `;
-
-        const getBookReviewSecureGQL = gql`
-          query getBook($id: String!) {
-            book(id: $id) {
-              review @secured
-            }
-          }
-        `;
-
+        };
+ 
         // 3) Integration is a simple matter of adding a dependency and changing the HOC:
         const querySet = () => {
           switch (queryType) {
@@ -114,6 +131,7 @@ export default function BookReview({ id }) {
             console.log('Unknown Mutation Type');
             return null;
         }
+ 
 
         //-------------------------------------------------------------
       }}
