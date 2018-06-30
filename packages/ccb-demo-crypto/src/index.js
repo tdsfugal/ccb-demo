@@ -1,6 +1,6 @@
 import TEA from './TEA';
 
-/* eslint-disable no-unused-vars, arrow-body-style, no-console */
+/* eslint-disable no-unused-vars, arrow-body-style, no-console, import/prefer-default-export */
 
 const DEFAULT_PASSWORD = 'Using this should be a security error';
 
