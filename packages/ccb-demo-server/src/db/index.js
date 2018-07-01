@@ -1,19 +1,35 @@
-import uuid from 'uuid';
 import { Crypto } from 'ccb-demo-crypto';
 
-import { ENCRYPT_REVIEW } from '../config';
+import { ENCRYPT_REVIEW_TEXT, ENCRYPT_REVIEWER } from '../config';
 
-import booksClearText from './booksClearText';
+import dbDefaults from './dbDefaults';
 
 const crypto = new Crypto();
 
 crypto.setCryptoOn();
 // crypto.setCryptoOff();
 
-export default booksClearText.reduce((acc, book) => {
-  acc[uuid()] = {
-    ...book,
-    review: ENCRYPT_REVIEW ? crypto.encrypt(book.review) : book.review,
-  };
-  return acc;
-}, {});
+/* eslint-disable no-param-reassign */
+export default {
+  books: dbDefaults.books.reduce((acc, book) => {
+    acc[book.id] = {
+      ...book,
+      reviews: book.reviews.map(review => review.id),
+    };
+    return acc;
+  }, {}),
+
+  reviews: dbDefaults.books.reduce((acc1, book) => {
+    const reviews = book.reviews.reduce((acc2, review) => {
+      acc2[review.id] = {
+        ...review,
+        reviewer: ENCRYPT_REVIEWER
+          ? crypto.encrypt(review.reviewer)
+          : review.reviewer,
+        text: ENCRYPT_REVIEW_TEXT ? crypto.encrypt(review.text) : review.text,
+      };
+      return acc2;
+    }, {});
+    return Object.assign(acc1, reviews);
+  }, {}),
+};

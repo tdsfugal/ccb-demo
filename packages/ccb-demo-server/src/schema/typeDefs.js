@@ -3,20 +3,31 @@ export default `
 
   type Query {
     books: [Book]
-    book(id: String): Book
+    book(id: String!): Book
+
+    bookReview(bookId: String!, id: String!): BookReview
   }
 
   type Mutation {
     addBook(title: String!, author: String!): Book
     deleteBook(id: String!): Book
-    setBookReview(id: String!, review: String): Book 
+
+    createBookReview(bookId: String!, reviewer: String!, text: String!): BookReview
+    updateBookReview(id: String!, bookId: String, text: String): BookReview
+    deleteBookReview(id: String!, bookId: String): BookReview
   }
 
   type Book {
     id: String!,
-    title: String,
-    author: String
-    review: String
+    title: String!,
+    author: String!
+    reviews: [BookReview]!
+  }
+
+  type BookReview {
+    id: String!,
+    reviewer: String!
+    text: String!
   }
 
 `;

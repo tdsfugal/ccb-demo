@@ -1,32 +1,47 @@
-import uuid from 'uuid';
-
-import db from '../db';
-
-const getBook = id => {
-  if (!id || !db[id]) return null;
-  return { ...db[id], id, __typename: 'Book' };
-};
+import { bookConnector, reviewConnector } from '../connectors';
+import { addReviewsToBook } from './util';
 
 export default {
   Query: {
-    books: () => (db ? Object.keys(db).map(id => getBook(id)) : null),
-    book: (_, args) => (db ? getBook(args.id) : null),
+    books: () => {
+      const books = bookConnector.getBooks();
+      return books.map(book => addReviewsToBook(book));
+    },
+    book: (_, args) => {
+      const book = bookConnector.getBook(args.id);
+      return addReviewsToBook(book);
+    },
+    bookReview: (_, args) => reviewConnector.getBookReview(args.id),
   },
-
-  Mutation: {
-    addBook: (_, { title, author }) => {
-      const id = uuid();
-      db[id] = { title, author, review: '' };
-      return getBook(id);
-    },
-    deleteBook: (_, { id }) => {
-      const gonner = getBook(id);
-      if (gonner) delete db[id];
-      return gonner;
-    },
-    setBookReview: (_, { id, review }) => {
-      if (db[id]) db[id].review = review;
-      return getBook(id);
-    },
-  },
+  //
+  // Mutation: {
+  //   addBook: (_, { title, author }) => {
+  //     const id = uuid();
+  //     db[id] = { title, author, reviews: {} };
+  //     return getBook(id);
+  //   },
+  //   deleteBook: (_, { id }) => {
+  //     const gonner = getBook(id);
+  //     if (gonner) delete db[id];
+  //     return gonner;
+  //   },
+  //
+  //   createBookReview: (_, { bookId, text }) => {
+  //     const reviewId = uuid();
+  //     if (db[bookId])
+  //       db[bookId].reviews[reviewId] = {
+  //         id: reviewId,
+  //         text: text,
+  //       };
+  //     return getBook(bookId);
+  //   },
+  //   updateBookReview: (_, { id, bookId, text }) => {
+  //     if (db[id]) db[bookId].reviews[reviewId].text = text;
+  //     return getBook(bookId);
+  //   },
+  //   deleteBookReview: (_, { id, bookId, text }) => {
+  //     if (db[bookid]) db[bookId].reviews[reviewId].text = text;
+  //     return getBook(bookId);
+  //   },
+  // },
 };
