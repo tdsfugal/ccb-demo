@@ -1,3 +1,9 @@
+import {
+  AUTHENTICATED_AT_STARTUP,
+  INITIAL_QUERY_TYPE,
+  INITIAL_MUTATION_TYPE,
+} from '../../config';
+
 export default {
   typeDefs: `
 
@@ -20,9 +26,9 @@ export default {
 
   defaults: {
     securityState: {
-      queryType: 'Query',
-      mutationType: 'Mutation',
-      isAuthenticated: false,
+      queryType: INITIAL_QUERY_TYPE,
+      mutationType: INITIAL_MUTATION_TYPE,
+      isAuthenticated: AUTHENTICATED_AT_STARTUP,
       __typename: 'SecurityState',
     },
   },
