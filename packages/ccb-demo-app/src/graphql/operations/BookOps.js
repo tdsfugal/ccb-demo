@@ -4,6 +4,8 @@ export const getBooksGQL = gql`
   query getBooks {
     books {
       id
+      title
+      author
     }
   }
 `;
