@@ -5,6 +5,7 @@ import { Mutation, Query } from 'react-apollo';
 import { setMutationTypeGQL, getSecurityStateGQL } from '../../../../graphql';
 
 import { HeaderButton } from '../../../_styled';
+import { MUTATION, SECURE_MUTATION } from '../../../../config';
 
 export default function MutationType() {
   return (
@@ -14,20 +15,20 @@ export default function MutationType() {
           {({ loading, error, data }) => {
             const mutationType =
               loading || error || !data || !data.securityState
-                ? 'Mutation'
+                ? MUTATION
                 : data.securityState.mutationType;
             return (
               <HeaderButton
-                backgroundColor={mutationType === 'Mutation' ? 'pink' : 'blue'}
-                color={mutationType === 'Mutation' ? 'black' : 'yellow'}
+                backgroundColor={mutationType === MUTATION ? 'pink' : 'blue'}
+                color={mutationType === MUTATION ? 'black' : 'yellow'}
                 onClick={() => {
-                  if (mutationType === 'Mutation') {
+                  if (mutationType === MUTATION) {
                     setMutationType({
-                      variables: { mutationType: 'Secure Mutation' },
+                      variables: { mutationType: SECURE_MUTATION },
                     });
                   } else {
                     setMutationType({
-                      variables: { mutationType: 'Mutation' },
+                      variables: { mutationType: MUTATION },
                     });
                   }
                 }}

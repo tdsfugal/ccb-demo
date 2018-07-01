@@ -5,6 +5,7 @@ import { Mutation, Query } from 'react-apollo';
 import { setQueryTypeGQL, getSecurityStateGQL } from '../../../../graphql';
 
 import { HeaderButton } from '../../../_styled';
+import { QUERY, SECURE_QUERY } from '../../../../config';
 
 export default function QueryType() {
   return (
@@ -14,17 +15,17 @@ export default function QueryType() {
           {({ loading, error, data }) => {
             const queryType =
               loading || error || !data || !data.securityState
-                ? 'Query'
+                ? QUERY
                 : data.securityState.queryType;
             return (
               <HeaderButton
-                backgroundColor={queryType === 'Query' ? 'pink' : 'blue'}
-                color={queryType === 'Query' ? 'black' : 'yellow'}
+                backgroundColor={queryType === QUERY ? 'pink' : 'blue'}
+                color={queryType === QUERY ? 'black' : 'yellow'}
                 onClick={() => {
-                  if (queryType === 'Query') {
-                    setQueryType({ variables: { queryType: 'Secure Query' } });
+                  if (queryType === QUERY) {
+                    setQueryType({ variables: { queryType: SECURE_QUERY } });
                   } else {
-                    setQueryType({ variables: { queryType: 'Query' } });
+                    setQueryType({ variables: { queryType: QUERY } });
                   }
                 }}
               >

@@ -8,6 +8,7 @@ import {
 } from '../../../../graphql';
 
 import { HeaderButton } from '../../../_styled';
+import { SUBSCRIPTION, SECURE_SUBSCRIPTION } from '../../../../config';
 
 export default function SubscriptionType() {
   return (
@@ -17,22 +18,22 @@ export default function SubscriptionType() {
           {({ loading, error, data }) => {
             const subscriptionType =
               loading || error || !data || !data.securityState
-                ? 'Subscription'
+                ? SUBSCRIPTION
                 : data.securityState.subscriptionType;
             return (
               <HeaderButton
                 backgroundColor={
-                  subscriptionType === 'Subscription' ? 'pink' : 'blue'
+                  subscriptionType === SUBSCRIPTION ? 'pink' : 'blue'
                 }
-                color={subscriptionType === 'Subscription' ? 'black' : 'yellow'}
+                color={subscriptionType === SUBSCRIPTION ? 'black' : 'yellow'}
                 onClick={() => {
-                  if (subscriptionType === 'Subscription') {
+                  if (subscriptionType === SUBSCRIPTION) {
                     setSubscriptionType({
-                      variables: { subscriptionType: 'Secure Subscription' },
+                      variables: { subscriptionType: SECURE_SUBSCRIPTION },
                     });
                   } else {
                     setSubscriptionType({
-                      variables: { subscriptionType: 'Subscription' },
+                      variables: { subscriptionType: SUBSCRIPTION },
                     });
                   }
                 }}

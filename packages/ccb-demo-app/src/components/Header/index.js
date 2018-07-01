@@ -1,11 +1,14 @@
 import React from 'react';
 import { string } from 'prop-types';
 
-import AddBook from './buttons/AddBook';
-import QueryType from './buttons/QueryType';
-import MutationType from './buttons/MutationType';
-import SubscriptionType from './buttons/SubscriptionType';
-import Authenticate from './buttons/Authenticate';
+import {
+  AddBook,
+  QueryType,
+  MutationType,
+  SubscriptionType,
+  LinkType,
+  Authenticate,
+} from './buttons';
 
 import { HeaderBanner, HeaderTitle, HeaderButtonGroup } from '../_styled';
 
@@ -18,6 +21,7 @@ export default function Header({ title }) {
         <QueryType />
         <MutationType />
         <SubscriptionType />
+        <LinkType />
         <Authenticate />
       </HeaderButtonGroup>
     </HeaderBanner>
