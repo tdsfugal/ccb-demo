@@ -4,7 +4,14 @@ import { string } from 'prop-types';
 import { Query } from 'react-apollo';
 
 import { getBookGQL } from '../../graphql';
-import { BookChip, BookTitle, BookAuthor } from '../_styled';
+import {
+  BookChip,
+  BookTitle,
+  BookAuthor,
+  BookReviewList,
+  BookReviewItem,
+} from '../_styled';
+
 import BookReview from '../BookReview';
 
 export default function Book({ id }) {
@@ -15,12 +22,18 @@ export default function Book({ id }) {
         if (error) return <p>Error :(</p>;
 
         if (data && data.book) {
-          const { title, author } = data.book;
+          const { title, author, reviews } = data.book;
           return (
             <BookChip>
               <BookTitle>{title}</BookTitle>
               <BookAuthor>{author}</BookAuthor>
-              <BookReview id={id} />
+              <BookReviewList>
+                {reviews.map(review => (
+                  <BookReviewItem key={review.id}>
+                    <BookReview id={review.id} />
+                  </BookReviewItem>
+                ))}
+              </BookReviewList>
             </BookChip>
           );
         }

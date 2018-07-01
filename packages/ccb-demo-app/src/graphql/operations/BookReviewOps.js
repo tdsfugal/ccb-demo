@@ -1,20 +1,22 @@
 import gql from 'graphql-tag';
 
 export const getBookReviewGQL = gql`
-  query getBook($id: String!) {
-    book(id: $id) {
+  query getBookReview($id: String!) {
+    bookReview(id: $id) {
       id
-      review
+      reviewer
+      text
       __typename
     }
   }
 `;
 
-export const setBookReviewGQL = gql`
-  mutation setBookReview($id: String!, $review: String) {
-    setBookReview(id: $id, review: $review) {
+export const updateBookReviewGQL = gql`
+  mutation updateBookReview($id: String!, $text: String) {
+    updateBookReview(id: $id, text: $text) {
       id
-      review
+      reviewer
+      text
       __typename
     }
   }
@@ -23,20 +25,22 @@ export const setBookReviewGQL = gql`
 // -------The only difference is the @secured annoation
 
 export const getBookReviewSecureGQL = gql`
-  query getBook($id: String!) {
-    book(id: $id) {
+  query getBookReview($id: String!) {
+    bookReview(id: $id) {
       id
-      review @secured
+      reviewer
+      text @secured
       __typename
     }
   }
 `;
 
-export const setBookReviewSecureGQL = gql`
-  mutation setBookReview($id: String!, $review: String) {
-    setBookReview(id: $id, review: $review) {
+export const updateBookReviewSecureGQL = gql`
+  mutation updateBookReview($id: String!, $text: String) {
+    updateBookReview(id: $id, text: $text) {
       id
-      review @secured
+      reviewer
+      text @secured
       __typename
     }
   }

@@ -11,7 +11,7 @@ export default {
       const book = bookConnector.getBook(args.id);
       return addReviewsToBook(book);
     },
-    bookReview: (_, args) => reviewConnector.getBookReview(args.id),
+    bookReview: (_, args) => reviewConnector.getReview(args.id),
   },
   //
   // Mutation: {

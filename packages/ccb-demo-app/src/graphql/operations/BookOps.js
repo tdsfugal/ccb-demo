@@ -15,6 +15,9 @@ export const getBookGQL = gql`
     book(id: $id) {
       title
       author
+      reviews {
+        id
+      }
     }
   }
 `;

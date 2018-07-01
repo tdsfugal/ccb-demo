@@ -12,6 +12,16 @@ export default {
           reviewer: 'Alice',
           text: 'A very nice story about wizards.',
         },
+        {
+          id: uuid(),
+          reviewer: 'Bob',
+          text: 'My favorite was the butter beer.',
+        },
+        {
+          id: uuid(),
+          reviewer: 'Carl',
+          text: 'It was scary.',
+        },
       ],
     },
     {

@@ -16,11 +16,22 @@ export const BookAuthor = styled('div')`
   margin: 5px 0px 10px 30px;
 `;
 
-export const BookReview = styled('input')`
-  font-size: 0.7em;
-  padding: 15px;
+export const BookReviewList = styled('ul')`
   width: 95%;
+`;
+
+export const BookReviewItem = styled('li')`
+  width: 95%;
+  list-style-type: none;
+`;
+
+export const BookReview = styled('textarea')`
+  font-size: 0.8em;
+  width: 100%;
   background-color: #fdfdfe;
   border-left: solid #99d 7px;
   border-top: solid #555 1px;
+  outline: none;
+  resize: none;
+  padding: 15px;
 `;

@@ -5,7 +5,7 @@ export default `
     books: [Book]
     book(id: String!): Book
 
-    bookReview(bookId: String!, id: String!): BookReview
+    bookReview(id: String!): BookReview
   }
 
   type Mutation {
@@ -13,8 +13,8 @@ export default `
     deleteBook(id: String!): Book
 
     createBookReview(bookId: String!, reviewer: String!, text: String!): BookReview
-    updateBookReview(id: String!, bookId: String, text: String): BookReview
-    deleteBookReview(id: String!, bookId: String): BookReview
+    updateBookReview(id: String!, text: String): BookReview
+    deleteBookReview(id: String! ): BookReview
   }
 
   type Book {

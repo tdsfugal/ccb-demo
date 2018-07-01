@@ -8,8 +8,8 @@ import {
   getSecurityStateGQL,
   getBookReviewGQL,
   getBookReviewSecureGQL,
-  setBookReviewGQL,
-  setBookReviewSecureGQL,
+  updateBookReviewGQL,
+  updateBookReviewSecureGQL,
 } from '../../graphql';
 
 import BookReviewEditor from './BookReviewEditor';
@@ -28,34 +28,38 @@ export default function BookReview({ id }) {
         //
         // 1) Same child function for both Secured and regular Query because
         // the data is decryrpted before it gets called:
-        const childComponent = setBookReview => ({ loading, error, data }) => {
+        const childComponent = updateBookReview => ({
+          loading,
+          error,
+          data,
+        }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
 
-          const { review } = data.book;
+          const { id, text } = data.bookReview;
           return (
             <BookReviewEditor
-              value={review}
+              value={text}
               update={newValue =>
-                setBookReview({ variables: { id, review: newValue } })
+                updateBookReview({ variables: { id, text: newValue } })
               }
             />
           );
         };
 
         // 3) Integration is a simple matter of adding a dependency and changing the HOC:
-        const querySet = setBookReview => {
+        const querySet = updateBookReview => {
           switch (queryType) {
             case 'Query':
               return (
                 <Query query={getBookReviewGQL} variables={{ id }}>
-                  {childComponent(setBookReview)}
+                  {childComponent(updateBookReview)}
                 </Query>
               );
             case 'Secure Query':
               return (
                 <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
-                  {childComponent(setBookReview)}
+                  {childComponent(updateBookReview)}
                 </SecureQuery>
               );
             default:
@@ -74,17 +78,17 @@ export default function BookReview({ id }) {
         switch (mutationType) {
           case 'Mutation':
             return (
-              <Mutation mutation={setBookReviewGQL}>
-                {setBookReview => querySet(setBookReview)}
+              <Mutation mutation={updateBookReviewGQL}>
+                {updateBookReview => querySet(updateBookReview)}
               </Mutation>
             );
           case 'Secure Mutation':
             return (
               <SecureMutation
-                mutation={setBookReviewSecureGQL}
+                mutation={updateBookReviewSecureGQL}
                 secured={secured}
               >
-                {setBookReview => querySet(setBookReview)}
+                {updateBookReview => querySet(updateBookReview)}
               </SecureMutation>
             );
           default:
