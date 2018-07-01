@@ -2,6 +2,7 @@ import {
   AUTHENTICATED_AT_STARTUP,
   INITIAL_QUERY_TYPE,
   INITIAL_MUTATION_TYPE,
+  INITIAL_SUBSCRIPTION_TYPE,
 } from '../../config';
 
 export default {
@@ -10,6 +11,7 @@ export default {
     type SecurityState {
       queryType: String!,
       mutationType: String!,
+      subscriptionType: String!,
       isAuthenticated: Boolean!
     }
 
@@ -20,6 +22,7 @@ export default {
     type Mutation {
       setQueryType: SecurityState
       setMutationType: SecurityState
+      setSubscriptionType: SecurityState
       setAuthentication: SecurityState
     }
   `,
@@ -28,6 +31,7 @@ export default {
     securityState: {
       queryType: INITIAL_QUERY_TYPE,
       mutationType: INITIAL_MUTATION_TYPE,
+      subscriptionType: INITIAL_SUBSCRIPTION_TYPE,
       isAuthenticated: AUTHENTICATED_AT_STARTUP,
       __typename: 'SecurityState',
     },
@@ -51,6 +55,17 @@ export default {
           data: {
             securityState: {
               mutationType: args.mutationType,
+              __typename: 'SecurityState',
+            },
+          },
+        });
+        return null;
+      },
+      setSubscriptionType: async (_, args, { cache }) => {
+        cache.writeData({
+          data: {
+            securityState: {
+              subscriptionType: args.subscriptionType,
               __typename: 'SecurityState',
             },
           },

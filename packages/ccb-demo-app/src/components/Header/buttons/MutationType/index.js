@@ -23,7 +23,7 @@ export default function MutationType() {
                 onClick={() => {
                   if (mutationType === 'Mutation') {
                     setMutationType({
-                      variables: { mutationType: 'SecureMutation' },
+                      variables: { mutationType: 'Secure Mutation' },
                     });
                   } else {
                     setMutationType({
@@ -32,7 +32,7 @@ export default function MutationType() {
                   }
                 }}
               >
-                {`<${mutationType} ...`}
+                {`${mutationType}`}
               </HeaderButton>
             );
           }}

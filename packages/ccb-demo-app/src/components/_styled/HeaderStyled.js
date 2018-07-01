@@ -29,8 +29,8 @@ export const HeaderButton = styled('button')`
   }};
   border: solid 2px #888;
   margin: 20px;
-  height: 40px;
-  width: 160px;
+  height: 50px;
+  width: 110px;
   font-size: 0.7em;
   font-weight: bold;
   overflow: wrap;

@@ -22,13 +22,13 @@ export default function QueryType() {
                 color={queryType === 'Query' ? 'black' : 'yellow'}
                 onClick={() => {
                   if (queryType === 'Query') {
-                    setQueryType({ variables: { queryType: 'SecureQuery' } });
+                    setQueryType({ variables: { queryType: 'Secure Query' } });
                   } else {
                     setQueryType({ variables: { queryType: 'Query' } });
                   }
                 }}
               >
-                {`<${queryType} ...`}
+                {`${queryType}`}
               </HeaderButton>
             );
           }}

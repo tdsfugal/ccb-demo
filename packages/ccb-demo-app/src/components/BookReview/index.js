@@ -52,7 +52,7 @@ export default function BookReview({ id }) {
                   {childComponent(setBookReview)}
                 </Query>
               );
-            case 'SecureQuery':
+            case 'Secure Query':
               return (
                 <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
                   {childComponent(setBookReview)}
@@ -78,7 +78,7 @@ export default function BookReview({ id }) {
                 {setBookReview => querySet(setBookReview)}
               </Mutation>
             );
-          case 'SecureMutation':
+          case 'Secure Mutation':
             return (
               <SecureMutation
                 mutation={setBookReviewSecureGQL}

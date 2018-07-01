@@ -4,6 +4,7 @@ import { string } from 'prop-types';
 import AddBook from './buttons/AddBook';
 import QueryType from './buttons/QueryType';
 import MutationType from './buttons/MutationType';
+import SubscriptionType from './buttons/SubscriptionType';
 import Authenticate from './buttons/Authenticate';
 
 import { HeaderBanner, HeaderTitle, HeaderButtonGroup } from '../_styled';
@@ -16,6 +17,7 @@ export default function Header({ title }) {
         <AddBook />
         <QueryType />
         <MutationType />
+        <SubscriptionType />
         <Authenticate />
       </HeaderButtonGroup>
     </HeaderBanner>

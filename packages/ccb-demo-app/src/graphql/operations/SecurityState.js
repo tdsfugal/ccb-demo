@@ -5,6 +5,7 @@ export const getSecurityStateGQL = gql`
     securityState {
       queryType
       mutationType
+      subscriptionType
       isAuthenticated
     }
   }
@@ -19,6 +20,12 @@ export const setQueryTypeGQL = gql`
 export const setMutationTypeGQL = gql`
   mutation setMutationType($mutationType: String!) {
     setMutationType(mutationType: $mutationType) @client
+  }
+`;
+
+export const setSubscriptionTypeGQL = gql`
+  mutation setSubscriptionType($subscriptionType: String!) {
+    setSubscriptionType(subscriptionType: $subscriptionType) @client
   }
 `;
 
