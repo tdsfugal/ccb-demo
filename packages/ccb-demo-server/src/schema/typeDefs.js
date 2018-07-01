@@ -26,6 +26,7 @@ export default `
 
   type BookReview {
     id: String!,
+    bookId: String!
     reviewer: String!
     text: String!
   }

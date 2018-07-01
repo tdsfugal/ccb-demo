@@ -1,16 +1,38 @@
-/* eslint-disable function-paren-newline */
-
-// import reviewConnector from './index';
+/* eslint-disable function-paren-newline arrow-body-style  */
+import uuid from 'uuid';
 
 export default class BookConnector {
   constructor(dbDefaults) {
     const db = dbDefaults.books || {};
 
-    this.getBook = id => {
+    this.getBooks = () => Object.keys(db).map(id => this.retrieveBook({ id }));
+
+    this.retrieveBook = ({ id }) => {
       if (!id || !db[id]) return null;
       return { ...db[id], __typename: 'Book' };
     };
 
-    this.getBooks = () => Object.keys(db).map(id => this.getBook(id));
+    this.createBook = ({ author, title }) => {
+      const id = uuid();
+      db[id] = { title, author, reviews: {} };
+      return this.retrievBook({ id });
+    };
+
+    this.deleteBook = ({ id }) => {
+      const gonner = this.retrieveBook({ id });
+      if (gonner) {
+        delete db[id];
+        return gonner;
+      }
+      return null;
+    };
+
+    this.updateBook = ({ book }) => {
+      if (db[book.id]) {
+        db[book.id] = book;
+        return book;
+      }
+      return null;
+    };
   }
 }
