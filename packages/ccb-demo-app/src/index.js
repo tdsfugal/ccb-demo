@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 
 import App from './app';
-import { getApolloClient } from './graphql';
+import getApolloClient from './graphql';
 
 // set up the boilerplate
 import './index.css'; // loads the base css

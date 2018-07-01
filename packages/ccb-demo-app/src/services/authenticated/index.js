@@ -1,5 +1,5 @@
 import getCrypto from '../crypto';
-import { getApolloClient, getSecurityStateGQL } from '../../graphql';
+import getApolloClient, { getSecurityStateGQL } from '../../graphql';
 
 const client = getApolloClient();
 

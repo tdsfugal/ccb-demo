@@ -1,3 +1,5 @@
+export const GRAPHQL_ENDPOINT = 'http://localhost:4002/graphql';
+
 export const AUTHENTICATED_AT_STARTUP = true;
 
 export const HTTP_LINK = 'HTTP';

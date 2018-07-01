@@ -10,7 +10,13 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "apollo-boost": "^0.1.7",
+    "apollo-cache-inmemory": "^1.2.5",
+    "apollo-client": "^2.3.5",
+    "apollo-link": "^1.2.2",
+    "apollo-link-error": "^1.1.0",
+    "apollo-link-http": "^1.5.4",
+    "apollo-link-state": "^0.4.1",
+    "apollo-link-ws": "^1.0.8",
     "ccb-demo-crypto": "^1.0.0",
     "ccb-demo-server": "^1.0.0",
     "crypto-collaboration-barrier": "1.0.0",
