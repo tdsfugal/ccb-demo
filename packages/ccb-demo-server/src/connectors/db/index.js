@@ -1,6 +1,6 @@
 import { Crypto } from 'ccb-demo-crypto';
 
-import { ENCRYPT_REVIEW_TEXT, ENCRYPT_REVIEWER } from '../config';
+import { ENCRYPT_REVIEW_TEXT, ENCRYPT_REVIEWER } from '../../config';
 
 import dbDefaults from './dbDefaults';
 
