@@ -18,19 +18,19 @@ export default class BookConnector {
       return this.retrievBook({ id });
     };
 
+    this.updateBook = ({ book }) => {
+      if (db[book.id]) {
+        db[book.id] = book;
+        return book;
+      }
+      return null;
+    };
+
     this.deleteBook = ({ id }) => {
       const gonner = this.retrieveBook({ id });
       if (gonner) {
         delete db[id];
         return gonner;
-      }
-      return null;
-    };
-
-    this.updateBook = ({ book }) => {
-      if (db[book.id]) {
-        db[book.id] = book;
-        return book;
       }
       return null;
     };
