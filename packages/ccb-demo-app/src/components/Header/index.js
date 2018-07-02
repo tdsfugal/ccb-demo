@@ -5,8 +5,8 @@ import {
   AddBook,
   QueryType,
   MutationType,
-  SubscriptionType,
-  LinkType,
+  // SubscriptionType,
+  // LinkType,
   Authenticate,
 } from './buttons';
 
@@ -20,8 +20,8 @@ export default function Header({ title }) {
         <AddBook />
         <QueryType />
         <MutationType />
-        <SubscriptionType />
-        <LinkType />
+        {/* <SubscriptionType />
+        <LinkType /> */}
         <Authenticate />
       </HeaderButtonGroup>
     </HeaderBanner>
