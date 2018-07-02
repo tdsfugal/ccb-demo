@@ -12,92 +12,73 @@ import {
   updateBookReviewSecureGQL,
 } from '../../graphql';
 
-import BookReviewEditor from './BookReviewEditor';
+import {
+  QUERY,
+  SECURE_QUERY,
+  MUTATION,
+  SECURE_MUTATION,
+  // SUBSCRIPTION,
+  // SECURE_SUBSCRIPTION,
+} from '../../config';
+
+import GenericBookReview from './GenericBookReview';
 
 /* eslint-disable spaced-comment, react/prop-types */
+const SECURED_LIST = [{ name: 'text' }];
 
 export default function BookReview({ id }) {
   return (
     <Query query={getSecurityStateGQL}>
-      {outerProps => {
-        if (outerProps.loading) return <p>Loading...</p>;
-        if (outerProps.error) return <p>Error</p>;
-        const { queryType, mutationType } = outerProps.data.securityState;
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error</p>;
 
-        //------------- Key part of the demo -------------------
-        //
-        // 1) Same child function for both Secured and regular Query because
-        // the data is decryrpted before it gets called:
-        const childComponent = updateBookReview => ({
-          loading,
-          error,
-          data,
-        }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error</p>;
+        const { queryType, mutationType } = data.securityState;
 
-          const { id, text } = data.bookReview;
-          return (
-            <BookReviewEditor
-              value={text}
-              update={newValue =>
-                updateBookReview({ variables: { id, text: newValue } })
-              }
-            />
-          );
-        };
+        let QueryComponent = null;
+        let MutationComponent = null;
+        let getReviewGQL = null;
+        let updateReviewGQL = null;
+        let secured = null;
 
-        // 3) Integration is a simple matter of adding a dependency and changing the HOC:
-        const querySet = updateBookReview => {
-          switch (queryType) {
-            case 'Query':
-              return (
-                <Query query={getBookReviewGQL} variables={{ id }}>
-                  {childComponent(updateBookReview)}
-                </Query>
-              );
-            case 'Secure Query':
-              return (
-                <SecureQuery query={getBookReviewSecureGQL} variables={{ id }}>
-                  {childComponent(updateBookReview)}
-                </SecureQuery>
-              );
-            default:
-              // eslint-disable-next-line no-console
-              console.log('Unknown Query Type');
-              return null;
-          }
-        };
-
-        // One key difference is that the things in the argument list that must be secured
-        // cannot be invered from the GraphQL annotations, as they refer only to the return values.
-        // An additional "secured" values input is required.
-        const secured = [{ name: 'review' }];
-
-        // The outer set is the same; just swap the HOC and add a couple of things.
-        switch (mutationType) {
-          case 'Mutation':
-            return (
-              <Mutation mutation={updateBookReviewGQL}>
-                {updateBookReview => querySet(updateBookReview)}
-              </Mutation>
-            );
-          case 'Secure Mutation':
-            return (
-              <SecureMutation
-                mutation={updateBookReviewSecureGQL}
-                secured={secured}
-              >
-                {updateBookReview => querySet(updateBookReview)}
-              </SecureMutation>
-            );
+        switch (queryType) {
+          case QUERY:
+            QueryComponent = Query;
+            getReviewGQL = getBookReviewGQL;
+            break;
+          case SECURE_QUERY:
+            QueryComponent = SecureQuery;
+            getReviewGQL = getBookReviewSecureGQL;
+            break;
           default:
-            // eslint-disable-next-line no-console
-            console.log('Unknown Mutation Type');
-            return null;
+            throw new Error('Unknown Query Type');
         }
 
-        //-------------------------------------------------------------
+        switch (mutationType) {
+          case MUTATION:
+            MutationComponent = Mutation;
+            updateReviewGQL = updateBookReviewGQL;
+            secured = []; // is ignored
+            break;
+          case SECURE_MUTATION:
+            MutationComponent = SecureMutation;
+            updateReviewGQL = updateBookReviewSecureGQL;
+            secured = SECURED_LIST;
+            break;
+          default:
+            throw new Error('Unknown Mutation Type');
+        }
+
+        return (
+          <GenericBookReview
+            id={id}
+            QueryComponent={QueryComponent}
+            MutationComponent={MutationComponent}
+            getReviewGQL={getReviewGQL}
+            updateReviewGQL={updateReviewGQL}
+            secured={secured}
+          />
+        );
       }}
     </Query>
   );
